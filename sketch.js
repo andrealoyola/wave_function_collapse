@@ -4,7 +4,9 @@ let alto; //altura de celda
 let ancho; //anchura de celda
 
 const azulejos = [];
-const NA = 11; //número de azulejos
+
+let opcionesI = [];
+
 const reglas = [
   //reglas de bordes de cada azulejos
   {
@@ -86,6 +88,8 @@ const reglas = [
   },
 ];
 
+const NA = reglas.length; //número de azulejos
+
 function preload() {
   for (let i = 0; i < NA; i++) {
     azulejos[i] = loadImage(`azulejos/tile${i}.png`);
@@ -98,7 +102,6 @@ function setup() {
   ancho = width / RETICULA;
   alto = height / RETICULA;
 
-  let opcionesI = [];
   for (let i = 0; i < azulejos.length; i++) {
     opcionesI.push(i);
   }
@@ -121,9 +124,11 @@ function setup() {
 
 function draw() {
   //background(250, 120, 10);
+
   const celdasDisponibles = celdas.filter((celda) => {
     return celda.colapsada == false;
   });
+
   if (celdasDisponibles.length > 0) {
     celdasDisponibles.sort((a, b) => {
       return a.opciones.length - b.opciones.length;
@@ -159,7 +164,7 @@ function draw() {
             }
           }
           //Monitorear entropía RIGHT
-          if (x - RETICULA - 1) {
+          if (x < RETICULA - 1) {
             const indiceRIGHT = x + 1 + y * RETICULA;
             const celdaRIGHT = celdas[indiceRIGHT];
             if (!celdaRIGHT.colapsada) {
@@ -183,18 +188,52 @@ function draw() {
             }
           }
         } else {
-          strokeWeight(5);
-          rect(x * ancho, y * alto, ancho, alto);
+          //strokeWeight(5);
+          //rect(x * ancho, y * alto, ancho, alto);
         }
       }
     }
     //noLoop();
+  } else {
+    //for (let i = 0; i < RETICULA * RETICULA; i++) {
+    //celdas[i] = {
+    //colapsada: false,
+    //opciones: opcionesI,
+    //};
+    //}
   }
 }
 
 function cambiarOrden(_celda, _regla, _opuesta) {
+  console.log("Celda recibida:", _celda);
+  console.log("Regla recibida:", _regla);
+  console.log("Dirección opuesta:", _opuesta);
+
+  if (!_celda || !_celda.opciones) {
+    console.error("Celda no válida o sin opciones:", _celda);
+    return;
+  }
+
+  if (!reglas[_regla]) {
+    console.error("Regla no válida:", _regla);
+    return;
+  }
+
   const nuevasOpciones = [];
   for (let i = 0; i < _celda.opciones.length; i++) {
+    const opcionActual = _celda.opciones[i];
+    const reglaActual = reglas[opcionActual];
+    console.log("Analizando opción:", opcionActual, "Regla actual:");
+
+    if (!reglaActual || reglaActual[_opuesta] === undefined) {
+      console.error(
+        `Regla inválida o clave '${_opuesta}' no encontrada para opción`,
+        opcionActual,
+        reglaActual
+      );
+      continue;
+    }
+
     if (_regla == reglas[_celda.opciones[i]][_opuesta]) {
       const celdaCompatible = _celda.opciones[i];
       nuevasOpciones.push(celdaCompatible);
