@@ -155,7 +155,7 @@ function draw() {
             const indiceUP = x + (y - 1) * RETICULA;
             const celdaUP = celdas[indiceUP];
             if (!celdaUP.colapsada) {
-              //cambiarOrden(celdaUP, reglasActuales["UP"], "DOWN");
+              cambiarOrden(celdaUP, reglasActuales["UP"], "DOWN");
             }
           }
           //Monitorear entropía RIGHT
@@ -163,7 +163,7 @@ function draw() {
             const indiceRIGHT = x + 1 + y * RETICULA;
             const celdaRIGHT = celdas[indiceRIGHT];
             if (!celdaRIGHT.colapsada) {
-              //cambiarOrden(celdaRIGHT, reglasActuales["RIGHT"], "LEFT");
+              cambiarOrden(celdaRIGHT, reglasActuales["RIGHT"], "LEFT");
             }
           }
           //Monitorear entropía DOWN
@@ -171,7 +171,7 @@ function draw() {
             const indiceDOWN = x + (y + 1) * RETICULA;
             const celdaDOWN = celdas[indiceDOWN];
             if (!celdaDOWN.colapsada) {
-              //cambiarOrden(celdaDOWN, reglasActuales["DOWN"], "UP");
+              cambiarOrden(celdaDOWN, reglasActuales["DOWN"], "UP");
             }
           }
           //Monitorear entropía LEFT
@@ -179,7 +179,7 @@ function draw() {
             const indiceLEFT = x - 1 + y * RETICULA;
             const celdaLEFT = celdas[indiceLEFT];
             if (!celdaLEFT.colapsada) {
-              //cambiarOrden(celdaLEFT, reglasActuales["LEFT"], "RIGHT");
+              cambiarOrden(celdaLEFT, reglasActuales["LEFT"], "RIGHT");
             }
           }
         } else {
