@@ -14,7 +14,7 @@ const reglas = [
     UP: 0,
     RIGHT: 0,
     DOWN: 0,
-    LEFT: 0,
+    LEFT: 2,
   },
   {
     //tile 1
@@ -61,16 +61,16 @@ const reglas = [
   {
     //tile 7
     UP: 0,
-    RIGHT: 1,
-    DOWN: 1,
-    LEFT: 0,
+    RIGHT: 0,
+    DOWN: 22,
+    LEFT: 2,
   },
   {
     //tile 8
-    UP: 0,
+    UP: 2,
     RIGHT: 0,
-    DOWN: 1,
-    LEFT: 1,
+    DOWN: 0,
+    LEFT: 0,
   },
   {
     //tile 9
@@ -83,8 +83,50 @@ const reglas = [
     //tile 10
     UP: 0,
     RIGHT: 0,
+    DOWN: 2,
+    LEFT: 0,
+  },
+  {
+    //tile 11
+    UP: 2,
+    RIGHT: 0,
+    DOWN: 1,
+    LEFT: 0,
+  },
+  {
+    //tile 12
+    UP: 1,
+    RIGHT: 1,
+    DOWN: 1,
+    LEFT: 1,
+  },
+  {
+    //tile 13
+    UP: 0,
+    RIGHT: 0,
+    DOWN: 2,
+    LEFT: 0,
+  },
+  {
+    //tile 14
+    UP: 0,
+    RIGHT: 0,
+    DOWN: 7,
+    LEFT: 0,
+  },
+  {
+    //tile 15
+    UP: 7,
+    RIGHT: 1,
     DOWN: 0,
     LEFT: 0,
+  },
+  {
+    //tile 16
+    UP: 0,
+    RIGHT: 0,
+    DOWN: 0,
+    LEFT: 1,
   },
 ];
 
