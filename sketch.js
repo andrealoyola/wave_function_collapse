@@ -11,59 +11,59 @@ const reglas = [
   //reglas de bordes de cada azulejos
   {
     //tile 0
-    UP: 21,
+    UP: 14,
     RIGHT: 0,
-    DOWN: 0,
-    LEFT: 19,
+    DOWN: 13,
+    LEFT: 10,
   },
   {
     //tile 1
-    UP: 22,
-    RIGHT: 4,
-    DOWN: 2,
+    UP: 15,
+    RIGHT: 12,
+    DOWN: 6,
     LEFT: 0,
   },
   {
     //tile 2
-    UP: 0,
-    RIGHT: 5,
-    DOWN: 6,
-    LEFT: 14,
+    UP: 12,
+    RIGHT: 6,
+    DOWN: 17,
+    LEFT: 10,
   },
   {
     //tile 3
-    UP: 2,
-    RIGHT: 15,
-    DOWN: 3,
-    LEFT: 5,
-  },
-  {
-    //tile 4
     UP: 6,
-    RIGHT: 6,
-    DOWN: 50,
-    LEFT: 16,
-  },
-  {
-    //tile 5
-    UP: 3,
-    RIGHT: 17,
-    DOWN: 4,
+    RIGHT: 11,
+    DOWN: 7,
     LEFT: 6,
   },
   {
+    //tile 4
+    UP: 17,
+    RIGHT: 7,
+    DOWN: 14,
+    LEFT: 10,
+  },
+  {
+    //tile 5
+    UP: 7,
+    RIGHT: 11,
+    DOWN: 8,
+    LEFT: 7,
+  },
+  {
     //tile 6
-    UP: 4,
-    RIGHT: 4,
-    DOWN: 12,
-    LEFT: 13,
+    UP: 8,
+    RIGHT: 11,
+    DOWN: 14,
+    LEFT: 10,
   },
   {
     //tile 7
-    UP: 50,
+    UP: 15,
     RIGHT: 0,
-    DOWN: 0,
-    LEFT: 14,
+    DOWN: 12,
+    LEFT: 11,
   },
   {
     //tile 8
@@ -547,6 +547,13 @@ const reglas = [
     RIGHT: 50,
     DOWN: 50,
     LEFT: 13,
+  },
+  {
+    //tile 77
+    UP: 14,
+    RIGHT: 10,
+    DOWN: 15,
+    LEFT: 11,
   },
 ];
 
