@@ -11,122 +11,542 @@ const reglas = [
   //reglas de bordes de cada azulejos
   {
     //tile 0
-    UP: 0,
+    UP: 21,
     RIGHT: 0,
     DOWN: 0,
-    LEFT: 2,
+    LEFT: 19,
   },
   {
     //tile 1
-    UP: 1,
-    RIGHT: 1,
-    DOWN: 1,
+    UP: 22,
+    RIGHT: 4,
+    DOWN: 2,
     LEFT: 0,
   },
   {
     //tile 2
     UP: 0,
-    RIGHT: 1,
-    DOWN: 1,
-    LEFT: 1,
+    RIGHT: 5,
+    DOWN: 6,
+    LEFT: 14,
   },
   {
     //tile 3
-    UP: 1,
-    RIGHT: 1,
-    DOWN: 0,
-    LEFT: 1,
+    UP: 2,
+    RIGHT: 15,
+    DOWN: 3,
+    LEFT: 5,
   },
   {
     //tile 4
-    UP: 1,
-    RIGHT: 0,
-    DOWN: 1,
-    LEFT: 1,
+    UP: 6,
+    RIGHT: 6,
+    DOWN: 50,
+    LEFT: 16,
   },
   {
     //tile 5
-    UP: 1,
-    RIGHT: 0,
-    DOWN: 0,
-    LEFT: 1,
+    UP: 3,
+    RIGHT: 17,
+    DOWN: 4,
+    LEFT: 6,
   },
   {
     //tile 6
-    UP: 1,
-    RIGHT: 1,
-    DOWN: 0,
-    LEFT: 0,
+    UP: 4,
+    RIGHT: 4,
+    DOWN: 12,
+    LEFT: 13,
   },
   {
     //tile 7
-    UP: 0,
+    UP: 50,
     RIGHT: 0,
-    DOWN: 22,
-    LEFT: 2,
+    DOWN: 0,
+    LEFT: 14,
   },
   {
     //tile 8
-    UP: 2,
-    RIGHT: 0,
-    DOWN: 0,
-    LEFT: 0,
+    UP: 0,
+    RIGHT: 3,
+    DOWN: 3,
+    LEFT: 50,
   },
   {
     //tile 9
-    UP: 1,
-    RIGHT: 1,
-    DOWN: 1,
-    LEFT: 1,
+    UP: 3,
+    RIGHT: 4,
+    DOWN: 50,
+    LEFT: 16,
   },
   {
     //tile 10
-    UP: 0,
-    RIGHT: 0,
-    DOWN: 2,
-    LEFT: 0,
+    UP: 50,
+    RIGHT: 50,
+    DOWN: 13,
+    LEFT: 50,
   },
   {
     //tile 11
-    UP: 2,
-    RIGHT: 0,
-    DOWN: 1,
+    UP: 13,
+    RIGHT: 50,
+    DOWN: 2,
     LEFT: 0,
   },
   {
     //tile 12
-    UP: 1,
-    RIGHT: 1,
-    DOWN: 1,
-    LEFT: 1,
+    UP: 2,
+    RIGHT: 50,
+    DOWN: 50,
+    LEFT: 3,
   },
   {
     //tile 13
-    UP: 0,
+    UP: 12,
+    RIGHT: 7,
+    DOWN: 50,
+    LEFT: 50,
+  },
+  {
+    //tile 14
+    UP: 50,
+    RIGHT: 50,
+    DOWN: 16,
+    LEFT: 50,
+  },
+  {
+    //tile 15
+    UP: 16,
+    RIGHT: 1,
+    DOWN: 1,
+    LEFT: 22,
+  },
+  {
+    //tile 16
+    UP: 50,
+    RIGHT: 15,
+    DOWN: 5,
+    LEFT: 1,
+  },
+  {
+    //tile 17
+    UP: 5,
+    RIGHT: 50,
+    DOWN: 2,
+    LEFT: 2,
+  },
+  {
+    //tile 18
+    UP: 2,
+    RIGHT: 50,
+    DOWN: 50,
+    LEFT: 13,
+  },
+  {
+    //tile 19
+    UP: 1,
+    RIGHT: 2,
+    DOWN: 50,
+    LEFT: 7,
+  },
+  {
+    //tile 20
+    UP: 50,
+    RIGHT: 1,
+    DOWN: 1,
+    LEFT: 22,
+  },
+  {
+    //tile 21
+    UP: 50,
+    RIGHT: 1,
+    DOWN: 50,
+    LEFT: 1,
+  },
+  {
+    //tile 22
+    UP: 1,
+    RIGHT: 2,
+    DOWN: 50,
+    LEFT: 50,
+  },
+  {
+    //tile 23
+    UP: 50,
+    RIGHT: 50,
+    DOWN: 2,
+    LEFT: 2,
+  },
+  {
+    //tile 24
+    UP: 2,
+    RIGHT: 50,
+    DOWN: 23,
+    LEFT: 12,
+  },
+  {
+    //tile 25
+    UP: 23,
+    RIGHT: 50,
+    DOWN: 50,
+    LEFT: 13,
+  },
+  {
+    //tile 26
+    UP: 50,
     RIGHT: 0,
+    DOWN: 0,
+    LEFT: 50,
+  },
+  {
+    //tile 27
+    UP: 50,
+    RIGHT: 50,
     DOWN: 2,
     LEFT: 0,
   },
   {
-    //tile 14
-    UP: 0,
-    RIGHT: 0,
-    DOWN: 7,
-    LEFT: 0,
+    //tile 28
+    UP: 2,
+    RIGHT: 50,
+    DOWN: 50,
+    LEFT: 3,
   },
   {
-    //tile 15
-    UP: 7,
+    //tile 29
+    UP: 0,
+    RIGHT: 3,
+    DOWN: 3,
+    LEFT: 50,
+  },
+  {
+    //tile 30
+    UP: 3,
+    RIGHT: 4,
+    DOWN: 50,
+    LEFT: 16,
+  },
+  {
+    //tile 31
+    UP: 50,
     RIGHT: 1,
-    DOWN: 0,
+    DOWN: 1,
+    LEFT: 22,
+  },
+  {
+    //tile 32
+    UP: 1,
+    RIGHT: 9,
+    DOWN: 11,
+    LEFT: 50,
+  },
+  {
+    //tile 33
+    UP: 5,
+    RIGHT: 50,
+    DOWN: 10,
+    LEFT: 9,
+  },
+  {
+    //tile 34
+    UP: 10,
+    RIGHT: 50,
+    DOWN: 50,
+    LEFT: 8,
+  },
+  {
+    //tile 35
+    UP: 11,
+    RIGHT: 8,
+    DOWN: 50,
+    LEFT: 9,
+  },
+  {
+    //tile 36
+    UP: 9,
+    RIGHT: 50,
+    DOWN: 50,
+    LEFT: 4,
+  },
+  {
+    //tile 37
+    UP: 50,
+    RIGHT: 1,
+    DOWN: 1,
+    LEFT: 22,
+  },
+  {
+    //tile 38
+    UP: 1,
+    RIGHT: 2,
+    DOWN: 50,
+    LEFT: 50,
+  },
+  {
+    //tile 39
+    UP: 5,
+    RIGHT: 50,
+    DOWN: 2,
+    LEFT: 2,
+  },
+  {
+    //tile 40
+    UP: 50,
+    RIGHT: 3,
+    DOWN: 3,
+    LEFT: 50,
+  },
+  {
+    //tile 41
+    UP: 2,
+    RIGHT: 50,
+    DOWN: 50,
+    LEFT: 3,
+  },
+  {
+    //tile 42
+    UP: 3,
+    RIGHT: 4,
+    DOWN: 50,
+    LEFT: 16,
+  },
+  {
+    //tile 43
+    UP: 50,
+    RIGHT: 50,
+    DOWN: 14,
+    LEFT: 50,
+  },
+  {
+    //tile 44
+    UP: 14,
+    RIGHT: 1,
+    DOWN: 1,
+    LEFT: 50,
+  },
+  {
+    //tile 45
+    UP: 50,
+    RIGHT: 15,
+    DOWN: 5,
+    LEFT: 1,
+  },
+  {
+    //tile 46
+    UP: 1,
+    RIGHT: 2,
+    DOWN: 50,
+    LEFT: 50,
+  },
+  {
+    //tile 47
+    UP: 5,
+    RIGHT: 50,
+    DOWN: 3,
+    LEFT: 2,
+  },
+  {
+    //tile 48
+    UP: 3,
+    RIGHT: 50,
+    DOWN: 7,
+    LEFT: 50,
+  },
+  {
+    //tile 49
+    UP: 7,
+    RIGHT: 4,
+    DOWN: 50,
+    LEFT: 50,
+  },
+  {
+    //tile 50
+    UP: 50,
+    RIGHT: 50,
+    DOWN: 17,
+    LEFT: 50,
+  },
+  {
+    //tile 51
+    UP: 17,
+    RIGHT: 50,
+    DOWN: 2,
     LEFT: 0,
   },
   {
-    //tile 16
+    //tile 52
+    UP: 2,
+    RIGHT: 50,
+    DOWN: 50,
+    LEFT: 3,
+  },
+  {
+    //tile 53
     UP: 0,
+    RIGHT: 3,
+    DOWN: 3,
+    LEFT: 50,
+  },
+  {
+    //tile 54
+    UP: 3,
+    RIGHT: 4,
+    DOWN: 8,
+    LEFT: 16,
+  },
+  {
+    //tile 55
+    UP: 8,
+    RIGHT: 4,
+    DOWN: 50,
+    LEFT: 50,
+  },
+  {
+    //tile 56
+    UP: 50,
     RIGHT: 0,
-    DOWN: 0,
-    LEFT: 1,
+    DOWN: 19,
+    LEFT: 0,
+  },
+  {
+    //tile 57
+    UP: 50,
+    RIGHT: 50,
+    DOWN: 2,
+    LEFT: 0,
+  },
+  {
+    //tile 58
+    UP: 19,
+    RIGHT: 3,
+    DOWN: 3,
+    LEFT: 50,
+  },
+  {
+    //tile 59
+    UP: 2,
+    RIGHT: 10,
+    DOWN: 50,
+    LEFT: 3,
+  },
+  {
+    //tile 60
+    UP: 50,
+    RIGHT: 11,
+    DOWN: 50,
+    LEFT: 10,
+  },
+  {
+    //tile 61
+    UP: 12,
+    RIGHT: 50,
+    DOWN: 50,
+    LEFT: 11,
+  },
+  {
+    //tile 62
+    UP: 3,
+    RIGHT: 4,
+    DOWN: 50,
+    LEFT: 16,
+  },
+  {
+    //tile 63
+    UP: 50,
+    RIGHT: 4,
+    DOWN: 50,
+    LEFT: 50,
+  },
+  {
+    //tile 64
+    UP: 50,
+    RIGHT: 4,
+    DOWN: 50,
+    LEFT: 50,
+  },
+  {
+    //tile 65
+    UP: 50,
+    RIGHT: 50,
+    DOWN: 15,
+    LEFT: 50,
+  },
+  {
+    //tile 66
+    UP: 15,
+    RIGHT: 50,
+    DOWN: 2,
+    LEFT: 0,
+  },
+  {
+    //tile 67
+    UP: 2,
+    RIGHT: 50,
+    DOWN: 50,
+    LEFT: 3,
+  },
+  {
+    //tile 68
+    UP: 0,
+    RIGHT: 3,
+    DOWN: 3,
+    LEFT: 16,
+  },
+  {
+    //tile 69
+    UP: 3,
+    RIGHT: 50,
+    DOWN: 3,
+    LEFT: 50,
+  },
+  {
+    //tile 70
+    UP: 3,
+    RIGHT: 4,
+    DOWN: 50,
+    LEFT: 14,
+  },
+  {
+    //tile 71
+    UP: 50,
+    RIGHT: 50,
+    DOWN: 18,
+    LEFT: 50,
+  },
+  {
+    //tile 72
+    UP: 18,
+    RIGHT: 1,
+    DOWN: 1,
+    LEFT: 22,
+  },
+  {
+    //tile 73
+    UP: 1,
+    RIGHT: 2,
+    DOWN: 50,
+    LEFT: 50,
+  },
+  {
+    //tile 74
+    UP: 5,
+    RIGHT: 50,
+    DOWN: 2,
+    LEFT: 2,
+  },
+  {
+    //tile 75
+    UP: 2,
+    RIGHT: 50,
+    DOWN: 20,
+    LEFT: 50,
+  },
+  {
+    //tile 76
+    UP: 20,
+    RIGHT: 50,
+    DOWN: 50,
+    LEFT: 13,
   },
 ];
 
