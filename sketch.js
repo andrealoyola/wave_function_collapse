@@ -1,563 +1,51 @@
-const celdas = []; //4x4
-const RETICULA = 12;
-let alto; //altura de celda
-let ancho; //anchura de celda
+const celdas = [];
+let RETICULAX = document.getElementById("cellSize").value;
+let RETICULAY;
+let ancho; //ancho de la celda
+let alto; //alto de la celda
+const startButton = document.getElementById("start");
 
 const azulejos = [];
 
-let opcionesI = [];
-
 const reglas = [
-  //reglas de bordes de cada azulejos
-  {
-    //tile 0
-    UP: 14,
-    RIGHT: 0,
-    DOWN: 13,
-    LEFT: 10,
-  },
-  {
-    //tile 1
-    UP: 15,
-    RIGHT: 12,
-    DOWN: 6,
-    LEFT: 0,
-  },
-  {
-    //tile 2
-    UP: 12,
-    RIGHT: 6,
-    DOWN: 17,
-    LEFT: 10,
-  },
-  {
-    //tile 3
-    UP: 6,
-    RIGHT: 11,
-    DOWN: 7,
-    LEFT: 6,
-  },
-  {
-    //tile 4
-    UP: 17,
-    RIGHT: 7,
-    DOWN: 14,
-    LEFT: 10,
-  },
-  {
-    //tile 5
-    UP: 7,
-    RIGHT: 11,
-    DOWN: 8,
-    LEFT: 7,
-  },
-  {
-    //tile 6
-    UP: 8,
-    RIGHT: 11,
-    DOWN: 14,
-    LEFT: 10,
-  },
-  {
-    //tile 7
-    UP: 15,
-    RIGHT: 0,
-    DOWN: 12,
-    LEFT: 10,
-  },
-  {
-    //tile 8
-    UP: 13,
-    RIGHT: 3,
-    DOWN: 4,
-    LEFT: 10,
-  },
-  {
-    //tile 9
-    UP: 4,
-    RIGHT: 11,
-    DOWN: 14,
-    LEFT: 10,
-  },
-  {
-    //tile 10
-    UP: 15,
-    RIGHT: 11,
-    DOWN: 14,
-    LEFT: 18,
-  },
-  {
-    //tile 11
-    UP: 18,
-    RIGHT: 11,
-    DOWN: 0,
-    LEFT: 0,
-  },
-  {
-    //tile 12
-    UP: 0,
-    RIGHT: 13,
-    DOWN: 14,
-    LEFT: 3,
-  },
-  {
-    //tile 13
-    UP: 15,
-    RIGHT: 5,
-    DOWN: 14,
-    LEFT: 10,
-  },
-  {
-    //tile 14
-    UP: 15,
-    RIGHT: 11,
-    DOWN: 5,
-    LEFT: 10,
-  },
-  {
-    //tile 15
-    UP: 15,
-    RIGHT: 1,
-    DOWN: 1,
-    LEFT: 10,
-  },
-  {
-    //tile 16
-    UP: 15,
-    RIGHT: 11,
-    DOWN: 10,
-    LEFT: 1,
-  },
-  {
-    //tile 17
-    UP: 10,
-    RIGHT: 11,
-    DOWN: 3,
-    LEFT: 2,
-  },
-  {
-    //tile 18
-    UP: 3,
-    RIGHT: 11,
-    DOWN: 14,
-    LEFT: 10,
-  },
-  {
-    //tile 19
-    UP: 1,
-    RIGHT: 2,
-    DOWN: 14,
-    LEFT: 5,
-  },
-  {
-    //tile 20
-    UP: 50,
-    RIGHT: 1,
-    DOWN: 1,
-    LEFT: 22,
-  },
-  {
-    //tile 21
-    UP: 50,
-    RIGHT: 1,
-    DOWN: 50,
-    LEFT: 1,
-  },
-  {
-    //tile 22
-    UP: 1,
-    RIGHT: 2,
-    DOWN: 50,
-    LEFT: 50,
-  },
-  {
-    //tile 23
-    UP: 50,
-    RIGHT: 50,
-    DOWN: 2,
-    LEFT: 2,
-  },
-  {
-    //tile 24
-    UP: 2,
-    RIGHT: 50,
-    DOWN: 23,
-    LEFT: 12,
-  },
-  {
-    //tile 25
-    UP: 23,
-    RIGHT: 50,
-    DOWN: 50,
-    LEFT: 13,
-  },
-  {
-    //tile 26
-    UP: 50,
-    RIGHT: 0,
-    DOWN: 0,
-    LEFT: 50,
-  },
-  {
-    //tile 27
-    UP: 50,
-    RIGHT: 50,
-    DOWN: 2,
-    LEFT: 0,
-  },
-  {
-    //tile 28
-    UP: 2,
-    RIGHT: 50,
-    DOWN: 50,
-    LEFT: 3,
-  },
-  {
-    //tile 29
-    UP: 0,
-    RIGHT: 3,
-    DOWN: 3,
-    LEFT: 50,
-  },
-  {
-    //tile 30
-    UP: 3,
-    RIGHT: 4,
-    DOWN: 50,
-    LEFT: 16,
-  },
-  {
-    //tile 31
-    UP: 50,
-    RIGHT: 1,
-    DOWN: 1,
-    LEFT: 22,
-  },
-  {
-    //tile 32
-    UP: 1,
-    RIGHT: 9,
-    DOWN: 11,
-    LEFT: 50,
-  },
-  {
-    //tile 33
-    UP: 5,
-    RIGHT: 50,
-    DOWN: 10,
-    LEFT: 9,
-  },
-  {
-    //tile 34
-    UP: 10,
-    RIGHT: 50,
-    DOWN: 50,
-    LEFT: 8,
-  },
-  {
-    //tile 35
-    UP: 11,
-    RIGHT: 8,
-    DOWN: 50,
-    LEFT: 9,
-  },
-  {
-    //tile 36
-    UP: 9,
-    RIGHT: 50,
-    DOWN: 50,
-    LEFT: 4,
-  },
-  {
-    //tile 37
-    UP: 50,
-    RIGHT: 1,
-    DOWN: 1,
-    LEFT: 22,
-  },
-  {
-    //tile 38
-    UP: 1,
-    RIGHT: 2,
-    DOWN: 50,
-    LEFT: 50,
-  },
-  {
-    //tile 39
-    UP: 5,
-    RIGHT: 50,
-    DOWN: 2,
-    LEFT: 2,
-  },
-  {
-    //tile 40
-    UP: 50,
-    RIGHT: 3,
-    DOWN: 3,
-    LEFT: 50,
-  },
-  {
-    //tile 41
-    UP: 2,
-    RIGHT: 50,
-    DOWN: 50,
-    LEFT: 3,
-  },
-  {
-    //tile 42
-    UP: 3,
-    RIGHT: 4,
-    DOWN: 50,
-    LEFT: 16,
-  },
-  {
-    //tile 43
-    UP: 50,
-    RIGHT: 50,
-    DOWN: 14,
-    LEFT: 50,
-  },
-  {
-    //tile 44
-    UP: 14,
-    RIGHT: 1,
-    DOWN: 1,
-    LEFT: 50,
-  },
-  {
-    //tile 45
-    UP: 50,
-    RIGHT: 15,
-    DOWN: 5,
-    LEFT: 1,
-  },
-  {
-    //tile 46
-    UP: 1,
-    RIGHT: 2,
-    DOWN: 50,
-    LEFT: 50,
-  },
-  {
-    //tile 47
-    UP: 5,
-    RIGHT: 50,
-    DOWN: 3,
-    LEFT: 2,
-  },
-  {
-    //tile 48
-    UP: 3,
-    RIGHT: 50,
-    DOWN: 7,
-    LEFT: 50,
-  },
-  {
-    //tile 49
-    UP: 7,
-    RIGHT: 4,
-    DOWN: 50,
-    LEFT: 50,
-  },
-  {
-    //tile 50
-    UP: 50,
-    RIGHT: 50,
-    DOWN: 17,
-    LEFT: 50,
-  },
-  {
-    //tile 51
-    UP: 17,
-    RIGHT: 50,
-    DOWN: 2,
-    LEFT: 0,
-  },
-  {
-    //tile 52
-    UP: 2,
-    RIGHT: 50,
-    DOWN: 50,
-    LEFT: 3,
-  },
-  {
-    //tile 53
-    UP: 0,
-    RIGHT: 3,
-    DOWN: 3,
-    LEFT: 50,
-  },
-  {
-    //tile 54
-    UP: 3,
-    RIGHT: 4,
-    DOWN: 8,
-    LEFT: 16,
-  },
-  {
-    //tile 55
-    UP: 8,
-    RIGHT: 4,
-    DOWN: 50,
-    LEFT: 50,
-  },
-  {
-    //tile 56
-    UP: 50,
-    RIGHT: 0,
-    DOWN: 19,
-    LEFT: 0,
-  },
-  {
-    //tile 57
-    UP: 50,
-    RIGHT: 50,
-    DOWN: 2,
-    LEFT: 0,
-  },
-  {
-    //tile 58
-    UP: 19,
-    RIGHT: 3,
-    DOWN: 3,
-    LEFT: 50,
-  },
-  {
-    //tile 59
-    UP: 2,
-    RIGHT: 10,
-    DOWN: 50,
-    LEFT: 3,
-  },
-  {
-    //tile 60
-    UP: 50,
-    RIGHT: 11,
-    DOWN: 50,
-    LEFT: 10,
-  },
-  {
-    //tile 61
-    UP: 12,
-    RIGHT: 50,
-    DOWN: 50,
-    LEFT: 11,
-  },
-  {
-    //tile 62
-    UP: 3,
-    RIGHT: 4,
-    DOWN: 50,
-    LEFT: 16,
-  },
-  {
-    //tile 63
-    UP: 50,
-    RIGHT: 4,
-    DOWN: 50,
-    LEFT: 50,
-  },
-  {
-    //tile 64
-    UP: 50,
-    RIGHT: 4,
-    DOWN: 50,
-    LEFT: 50,
-  },
-  {
-    //tile 65
-    UP: 50,
-    RIGHT: 50,
-    DOWN: 15,
-    LEFT: 50,
-  },
-  {
-    //tile 66
-    UP: 15,
-    RIGHT: 50,
-    DOWN: 2,
-    LEFT: 0,
-  },
-  {
-    //tile 67
-    UP: 2,
-    RIGHT: 50,
-    DOWN: 50,
-    LEFT: 3,
-  },
-  {
-    //tile 68
-    UP: 0,
-    RIGHT: 3,
-    DOWN: 3,
-    LEFT: 16,
-  },
-  {
-    //tile 69
-    UP: 3,
-    RIGHT: 50,
-    DOWN: 3,
-    LEFT: 50,
-  },
-  {
-    //tile 70
-    UP: 3,
-    RIGHT: 4,
-    DOWN: 50,
-    LEFT: 14,
-  },
-  {
-    //tile 71
-    UP: 50,
-    RIGHT: 50,
-    DOWN: 18,
-    LEFT: 50,
-  },
-  {
-    //tile 72
-    UP: 18,
-    RIGHT: 1,
-    DOWN: 1,
-    LEFT: 22,
-  },
-  {
-    //tile 73
-    UP: 1,
-    RIGHT: 2,
-    DOWN: 50,
-    LEFT: 50,
-  },
-  {
-    //tile 74
-    UP: 5,
-    RIGHT: 50,
-    DOWN: 2,
-    LEFT: 2,
-  },
-  {
-    //tile 75
-    UP: 2,
-    RIGHT: 50,
-    DOWN: 20,
-    LEFT: 50,
-  },
-  {
-    //tile 76
-    UP: 20,
-    RIGHT: 50,
-    DOWN: 50,
-    LEFT: 13,
-  },
-  {
-    //tile 77
-    UP: 14,
-    RIGHT: 10,
-    DOWN: 15,
-    LEFT: 11,
-  },
+  { UP: 0, RIGHT: 2, DOWN: 4, LEFT: 0 }, //0
+  { UP: 0, RIGHT: 0, DOWN: 5, LEFT: 2 }, //1
+  { UP: 0, RIGHT: 2, DOWN: 6, LEFT: 2 }, //2
+  { UP: 0, RIGHT: 0, DOWN: 3, LEFT: 2 }, //3
+  { UP: 4, RIGHT: 6, DOWN: 4, LEFT: 0 }, //4
+  { UP: 5, RIGHT: 0, DOWN: 5, LEFT: 6 }, //5
+  { UP: 6, RIGHT: 3, DOWN: 0, LEFT: 3 }, //6
+  { UP: 3, RIGHT: 0, DOWN: 0, LEFT: 3 }, //7
+  { UP: 4, RIGHT: 4, DOWN: 0, LEFT: 0 }, //8
+  { UP: 5, RIGHT: 0, DOWN: 0, LEFT: 4 }, //9
+  { UP: 0, RIGHT: 1, DOWN: 5, LEFT: 2 }, //10
+  { UP: 0, RIGHT: 1, DOWN: 0, LEFT: 1 }, //11
+  { UP: 0, RIGHT: 0, DOWN: 0, LEFT: 1 }, //12
+  { UP: 6, RIGHT: 3, DOWN: 0, LEFT: 3 }, //13
+  { UP: 0, RIGHT: 0, DOWN: 0, LEFT: 0 }, //14
+  { UP: 0, RIGHT: 2, DOWN: 2, LEFT: 0 }, //15
+  { UP: 0, RIGHT: 0, DOWN: 5, LEFT: 2 }, //16
+  { UP: 0, RIGHT: 1, DOWN: 0, LEFT: 0 }, //17
+  { UP: 0, RIGHT: 2, DOWN: 4, LEFT: 1 }, //18
+  { UP: 0, RIGHT: 2, DOWN: 6, LEFT: 2 }, //19
+  { UP: 2, RIGHT: 3, DOWN: 0, LEFT: 0 }, //20
+  { UP: 5, RIGHT: 0, DOWN: 0, LEFT: 3 }, //21
+  { UP: 2, RIGHT: 6, DOWN: 2, LEFT: 0 }, //22
+  { UP: 6, RIGHT: 6, DOWN: 6, LEFT: 6 }, //23
+  { UP: 3, RIGHT: 0, DOWN: 3, LEFT: 6 }, //24
+  { UP: 0, RIGHT: 0, DOWN: 0, LEFT: 0 }, //25
+  { UP: 5, RIGHT: 1, DOWN: 0, LEFT: 3 }, //26
+  { UP: 4, RIGHT: 3, DOWN: 0, LEFT: 1 }, //27
+  { UP: 6, RIGHT: 4, DOWN: 0, LEFT: 4 }, //28
+  { UP: 0, RIGHT: 1, DOWN: 5, LEFT: 2 }, //29
+  { UP: 3, RIGHT: 0, DOWN: 3, LEFT: 6 }, //30
+  { UP: 0, RIGHT: 0, DOWN: 0, LEFT: 0 }, //31
+  { UP: 0, RIGHT: 0, DOWN: 0, LEFT: 1 }, //32
+  { UP: 0, RIGHT: 0, DOWN: 0, LEFT: 0 }, //33
+  { UP: 6, RIGHT: 4, DOWN: 0, LEFT: 4 }, //34
 ];
 
-const NA = reglas.length; //número de azulejos
+const NA = reglas.length; //numero de azulejos
 
 function preload() {
   for (let i = 0; i < NA; i++) {
@@ -566,42 +54,38 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1080, 1080);
+  createCanvas(windowWidth, windowHeight);
 
-  ancho = width / RETICULA;
-  alto = height / RETICULA;
+  ancho = width / RETICULAX;
+  alto = ancho;
+  RETICULAY = Math.floor(height / ancho);
 
+  let opcionesI = [];
   for (let i = 0; i < azulejos.length; i++) {
     opcionesI.push(i);
   }
-
-  for (let i = 0; i < RETICULA * RETICULA; i++) {
+  for (let i = 0; i < RETICULAX * RETICULAY; i++) {
     celdas[i] = {
       colapsada: false,
       opciones: opcionesI,
     };
   }
-  celdas[8].colapsada = true;
-  celdas[3].colapsada = true;
-
-  celdas[12].opciones = [5, 6, 8];
-  celdas[4].opciones = [4, 7, 12];
-  celdas[6].opciones = [9, 7, 12];
-  celdas[1].opciones = [6, 4, 8, 10];
-  celdas[5].opciones = [11, 6, 4, 8, 10];
+  //print(celdas);
+  //celdas[8].colapsada = true;
+  //celdas[3].colapsada = true;
+  startButton.addEventListener("click", resetAll);
 }
 
 function draw() {
-  //background(250, 120, 10);
-
-  const celdasDisponibles = celdas.filter((celda) => {
-    return celda.colapsada == false;
+  const celdasConOpciones = celdas.filter((celda) => {
+    return celda.opciones.length > 0;
   });
 
+  const celdasDisponibles = celdasConOpciones.filter(
+    (celda) => celda.colapsada == false
+  );
   if (celdasDisponibles.length > 0) {
-    celdasDisponibles.sort((a, b) => {
-      return a.opciones.length - b.opciones.length;
-    });
+    celdasDisponibles.sort((a, b) => a.opciones.length - b.opciones.length);
     const celdasPorColapsar = celdasDisponibles.filter((celda) => {
       return celda.opciones.length == celdasDisponibles[0].opciones.length;
     });
@@ -614,95 +98,59 @@ function draw() {
 
     //print(celdaSeleccionada);
 
-    for (let x = 0; x < RETICULA; x++) {
-      for (let y = 0; y < RETICULA; y++) {
-        const celdaIndex = x + y * RETICULA;
+    for (let x = 0; x < RETICULAX; x++) {
+      for (let y = 0; y < RETICULAY; y++) {
+        const celdaIndex = x + y * RETICULAX;
         const celdaActual = celdas[celdaIndex];
         if (celdaActual.colapsada) {
           const indiceDeAzulejo = celdaActual.opciones[0];
           const reglasActuales = reglas[indiceDeAzulejo];
           //print(reglasActuales);
           image(azulejos[indiceDeAzulejo], x * ancho, y * alto, ancho, alto);
-
-          //Monitorear entropía UP
+          //Cambiar entropía UP
           if (y > 0) {
-            const indiceUP = x + (y - 1) * RETICULA;
-            const celdaUP = celdas[indiceUP];
+            const indeceUP = x + (y - 1) * RETICULAX;
+            const celdaUP = celdas[indeceUP];
             if (!celdaUP.colapsada) {
-              cambiarOrden(celdaUP, reglasActuales["UP"], "DOWN");
+              cambiarEntropia(celdaUP, reglasActuales["UP"], "DOWN");
             }
           }
-          //Monitorear entropía RIGHT
-          if (x < RETICULA - 1) {
-            const indiceRIGHT = x + 1 + y * RETICULA;
-            const celdaRIGHT = celdas[indiceRIGHT];
+          //Cambiar entropía RIGHT
+          if (x < RETICULAX - 1) {
+            const indeceRIGHT = x + 1 + y * RETICULAX;
+            const celdaRIGHT = celdas[indeceRIGHT];
             if (!celdaRIGHT.colapsada) {
-              cambiarOrden(celdaRIGHT, reglasActuales["RIGHT"], "LEFT");
+              cambiarEntropia(celdaRIGHT, reglasActuales["RIGHT"], "LEFT");
             }
           }
-          //Monitorear entropía DOWN
-          if (y < RETICULA - 1) {
-            const indiceDOWN = x + (y + 1) * RETICULA;
-            const celdaDOWN = celdas[indiceDOWN];
+          //Cambiar entropía DOWN
+          if (y < RETICULAY - 1) {
+            const indeceDOWN = x + (y + 1) * RETICULAX;
+            const celdaDOWN = celdas[indeceDOWN];
             if (!celdaDOWN.colapsada) {
-              cambiarOrden(celdaDOWN, reglasActuales["DOWN"], "UP");
+              cambiarEntropia(celdaDOWN, reglasActuales["DOWN"], "UP");
             }
           }
-          //Monitorear entropía LEFT
+          //Cambiar entropía LEFT
           if (x > 0) {
-            const indiceLEFT = x - 1 + y * RETICULA;
-            const celdaLEFT = celdas[indiceLEFT];
+            const indeceLEFT = x - 1 + y * RETICULAX;
+            const celdaLEFT = celdas[indeceLEFT];
             if (!celdaLEFT.colapsada) {
-              cambiarOrden(celdaLEFT, reglasActuales["LEFT"], "RIGHT");
+              cambiarEntropia(celdaLEFT, reglasActuales["LEFT"], "RIGHT");
             }
           }
         } else {
-          //strokeWeight(5);
           //rect(x * ancho, y * alto, ancho, alto);
         }
       }
     }
-    //noLoop();
-  } else {
-    //for (let i = 0; i < RETICULA * RETICULA; i++) {
-    //celdas[i] = {
-    //colapsada: false,
-    //opciones: opcionesI,
-    //};
-    //}
   }
+  //noLoop();
 }
 
-function cambiarOrden(_celda, _regla, _opuesta) {
-  console.log("Celda recibida:", _celda);
-  console.log("Regla recibida:", _regla);
-  console.log("Dirección opuesta:", _opuesta);
-
-  if (!_celda || !_celda.opciones) {
-    console.error("Celda no válida o sin opciones:", _celda);
-    return;
-  }
-
-  if (!reglas[_regla]) {
-    console.error("Regla no válida:", _regla);
-    return;
-  }
-
+function cambiarEntropia(_celda, _regla, _opuesta) {
   const nuevasOpciones = [];
   for (let i = 0; i < _celda.opciones.length; i++) {
-    const opcionActual = _celda.opciones[i];
-    const reglaActual = reglas[opcionActual];
-    console.log("Analizando opción:", opcionActual, "Regla actual:");
-
-    if (!reglaActual || reglaActual[_opuesta] === undefined) {
-      console.error(
-        `Regla inválida o clave '${_opuesta}' no encontrada para opción`,
-        opcionActual,
-        reglaActual
-      );
-      continue;
-    }
-
     if (_regla == reglas[_celda.opciones[i]][_opuesta]) {
       const celdaCompatible = _celda.opciones[i];
       nuevasOpciones.push(celdaCompatible);
@@ -710,4 +158,24 @@ function cambiarOrden(_celda, _regla, _opuesta) {
   }
   _celda.opciones = nuevasOpciones;
   print(nuevasOpciones);
+}
+
+function resetAll() {
+  RETICULAX = document.getElementById("cellSize").value;
+  ancho = width / RETICULAX;
+  alto = ancho;
+  RETICULAY = Math.floor(height / ancho);
+
+  background(240);
+
+  let opcionesI = [];
+  for (let i = 0; i < azulejos.length; i++) {
+    opcionesI.push(i);
+  }
+  for (let i = 0; i < RETICULAX * RETICULAX; i++) {
+    celdas[i] = {
+      colapsada: false,
+      opciones: opcionesI,
+    };
+  }
 }
