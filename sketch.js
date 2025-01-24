@@ -3,7 +3,7 @@ let RETICULAX = document.getElementById("cellSize").value;
 let RETICULAY;
 let ancho; //ancho de la celda
 let alto; //alto de la celda
-const startButton = document.getElementById("start");
+const startButton = document.getElementById("start"); //comienzo
 
 const azulejos = [];
 
